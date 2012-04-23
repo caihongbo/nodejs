@@ -1,9 +1,12 @@
+var view = require('./../view').view;
+
 function Home(){
 }
 
 Home.prototype ={
 	index: function(){
-	console.log('hi guy');
+	return view;
 	}
 }
+
 exports.controller = new Home();

@@ -1,20 +1,9 @@
 var http = require('http');
+var handler = require('./handler');
 function start(router){
 	http.createServer(function (request, response) {
-	var path = {controller: "home",action: "index"};
-	handle(path, requestion);
-	response.end();
+    handler.handle(request, response, router);
 	}).listen(1337, '127.0.0.1');
-}
-
-function handle(path){
-    var controller = findeController(path);
-	controller[path.action]();
-   }
-
-function findeController(path){
-	var controller = require('./Controllers/' + path.controller).controller;
-	return  controller;
 }
 
 exports.start = start;
