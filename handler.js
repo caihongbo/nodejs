@@ -19,7 +19,7 @@ function handle(req, res, router){
 			} else {
 				var controller = loadController(route);
 				if(typeof controller[route.action] === 'function'){
-					controller[route.action]().render(request, response, route); 
+					controller[route.action]().render(request, response, route, controller.viewData); 
 				}
 				else{
 					Writer.write("asserts" + url.parse(request.url).pathname, response);

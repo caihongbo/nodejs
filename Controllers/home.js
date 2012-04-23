@@ -1,21 +1,24 @@
 var view = require('./../view').view;
-var exec = require("child_process").exec;
+// var mangodb = require('mangodb');
+var controller = require('./controller').controller;
 
 function Home(){
-
 }
 
-function sleep(milliSeconds) {
-    var startTime = new Date().getTime();
-    while (new Date().getTime() < startTime + milliSeconds);
-  }
-  
-Home.prototype ={
-	index: function(){
-
-
+Home.prototype = controller;
+ 
+Home.prototype.index = function(){
+	var user = {name: "Lin zhixiong", age: 25}	
+	this.viewData['user'] = user;
 	return view;
-	}
 }
+
+Home.prototype.other = function(){
+	var user = {name: "Lin zhixiong", age: 25}	
+	return view;
+}
+
+
+
 
 exports.controller = new Home();
