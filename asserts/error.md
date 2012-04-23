@@ -1,1 +1,1 @@
-route has not been set, please set a route!
+404, ~~~~~~~~~~~~~~~~~~~~~~~the url you have requested is not exist.

@@ -16,7 +16,12 @@ function handle(req, res, router){
 				Writer.write("asserts/error.md", response);	
 			} else {
 				var controller = loadController(route);
-				controller[route.action]().render(request, response, route);
+				if(typeof controller[route.action] === 'function'){
+					controller[route.action]().render(request, response, route);
+				}
+				else{
+					Writer.write("asserts/error.md", response);	
+				}
 			}
 		});
 	}
@@ -25,6 +30,4 @@ function loadController(route){
 	var controller = require('./Controllers/' + route.controller).controller;
 	return  controller;
 }
-
-
 exports.handle = handle;
