@@ -9,7 +9,7 @@ function parse(requestUrl){
 	names.pop();
 	
 	if(names.length>=2){
-		return {
+		return { 
 			controller: names[0], 
 			action: names[1]
 		};
