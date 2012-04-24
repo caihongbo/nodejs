@@ -1,8 +1,8 @@
 var http = require('http');
-var handler = require('./handler');
+var handle = require('./handler').handle;
 function start(router){
 	http.createServer(function (request, response) {
-	request.on('end', function(){handler.handle(request, response, router);});
+		request.on('end', function(){handle(request, response, router);});
 	}).listen(1337, '127.0.0.1');
 }
 

@@ -6,7 +6,7 @@ function parse(requestUrl){
 	var names = pathName.split('/');
 	names.shift();
 	if(names[names.length-1] == '')
-	  names.pop();
+	names.pop();
 	
 	if(names.length>=2){
 		return {

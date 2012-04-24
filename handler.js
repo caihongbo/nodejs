@@ -12,22 +12,22 @@ function handle(req, res, router){
 	var route = router.parse(request.url);
 	console.log(route);
 	var controllerFile = './Controllers/' + route.controller + '.js';
-	 
-	path.exists(controllerFile,	 function (exists) {
-			if (!exists) {
-				Writer.write("asserts" + url.parse(request.url).pathname, response);
-			} else {
-				var controller = loadController(route);
-				if(typeof controller[route.action] === 'function'){
-					controller[route.action]().render(request, response, route, controller.viewData); 
-				}
-				else{
-					Writer.write("asserts" + url.parse(request.url).pathname, response);
-				}
-			}
-		});
-	}
 	
+	path.exists(controllerFile,	 function (exists) {
+		if (!exists) {
+			Writer.write("asserts" + url.parse(request.url).pathname, response);
+		} else {
+			var controller = loadController(route);
+			if(typeof controller[route.action] === 'function'){
+				controller[route.action]().render(request, response, route, controller.viewData); 
+			}
+			else{
+				Writer.write("asserts" + url.parse(request.url).pathname, response);
+			}
+		}
+	});
+}
+
 function loadController(route){
 	var controller = require('./Controllers/' + route.controller).controller;
 	return  controller;
