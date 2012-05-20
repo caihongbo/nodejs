@@ -1,7 +1,9 @@
 var path = require('path');
 var fs = require('fs');
 function readFile(realPath, response){
-	var extension = path.extname(realPath);
+	if(realPath.indexOf('/')===0){
+		realPath = realPath.substring(1,realPath.length);
+	}
 	path.exists(realPath, function (exists) {
 		if (!exists) {
 			response.writeHead(404, {'Content-Type': 'text/plain'});
@@ -14,7 +16,7 @@ function readFile(realPath, response){
 					response.end("error message");
 				} else {
 
-console.log(contentTypes[extension]);
+					var extension = path.extname(realPath);
 					response.writeHead(200, {'Content-Type': contentTypes[extension]});
 					response.write(file, "binary");
 					response.end();

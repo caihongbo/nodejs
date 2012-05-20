@@ -2,8 +2,8 @@
 <head>
 <title>Home page</title>
 </head>
-<script src="javascript/jquery.min.js"></script>
-<script src="javascript/jquery.tmpl.js"></script>
+<script src="/resources/javascript/jquery.min.js"></script>
+<script src="/resources/javascript/jquery.tmpl.js"></script>
 </head>
 <body>
 <div>
@@ -24,5 +24,20 @@ $("#productTmpl").tmpl(products).appendTo( "body" );
 </script>
 	you are requesting home page
 </div>
+<div id="timeline-embed"></div>
+    <script type="text/javascript">
+        var timeline_config = {
+            width:          "100%",
+            height:         "100%",
+            source:         '/data/example_kitchensink.json',
+            start_at_end:   true,                          //OPTIONAL
+            hash_bookmark:  true,                           //OPTIONAL
+            font:           'Bevan-PotanoSans',             //OPTIONAL
+            maptype:        'watercolor',                   //OPTIONAL
+            css:            '/resources/css/timeline.css',     //OPTIONAL
+            js:             '/resources/javascript/timeline-min.js'    
+        }
+    </script>
+    <script type="text/javascript" src="/resources/javascript/timeline-embed.js"></script>
 </body>
 </html>
